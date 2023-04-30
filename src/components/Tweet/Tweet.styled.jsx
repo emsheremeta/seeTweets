@@ -35,5 +35,5 @@ export const Button = styled.button`
   background-color: #ebd8ff;
   color: #373737;
   border-color:  #ebd8ff;
-}
+
 `;
