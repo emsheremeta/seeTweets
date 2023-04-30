@@ -36,12 +36,9 @@ export const TweetList = () => {
     <div>
       <Filter handleChange={handleFilterChange} />
       <ul>
-        {tweets
-          .filter()
-          .slice(0, limit)
-          .map(el => {
-            return <Tweet key={el.id} el={el} filter={filter} />;
-          })}
+        {tweets.slice(0, limit).map(el => {
+          return <Tweet key={el.id} el={el} filter={filter} />;
+        })}
       </ul>
       <button type="button" onClick={handleLoadMore}>
         Load more
