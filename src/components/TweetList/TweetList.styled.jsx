@@ -5,7 +5,7 @@ export const GridContainer = styled.div`
   grid-template-columns: repeat(3, 0fr);
   grid-template-rows: repeat(3, 0fr);
   gap: 20px;
-  margin-left: 260px;
+  margin-left: 160px;
 `;
 export const Button = styled.button`
 width: 196px;
