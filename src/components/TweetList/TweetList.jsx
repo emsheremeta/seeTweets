@@ -4,7 +4,7 @@ import { Tweet } from 'components/Tweet/Tweet';
 import { Filter } from 'components/Filter/Filter';
 import ReactLoading from 'react-loading';
 import { GridContainer } from './TweetList.styled';
-import { Button, ButtonWrapper } from './TweetList.styled';
+import { Button, ButtonWrapper, EmptyFollowing } from './TweetList.styled';
 
 export const TweetList = () => {
   const [tweets, setTweets] = useState([]);
@@ -84,7 +84,9 @@ export const TweetList = () => {
           </Button>
         </ButtonWrapper>
       )}
-      {getFilteredTweets().length === 0 && <p>You do not follow any users</p>}
+      {getFilteredTweets().length === 0 && (
+        <EmptyFollowing>You do not follow any users</EmptyFollowing>
+      )}
     </div>
   );
 };

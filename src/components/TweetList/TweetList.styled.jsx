@@ -27,3 +27,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const EmptyFollowing = styled.div`
+  text-align: center;
+`;
