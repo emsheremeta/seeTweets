@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { Tweet } from 'components/Tweet/Tweet';
 import { Filter } from 'components/Filter/Filter';
 import ReactLoading from 'react-loading';
+import { GridContainer } from './TweetList.styled';
+import { Button, ButtonWrapper } from './TweetList.styled';
 
 export const TweetList = () => {
   const [tweets, setTweets] = useState([]);
@@ -68,17 +70,19 @@ export const TweetList = () => {
   return (
     <div>
       <Filter handleChange={handleFilterChange} />
-      <ul>
+      <GridContainer>
         {getFilteredTweets()
           .slice(0, limit)
           .map(el => {
             return <Tweet key={el.id} el={getElement(el)} />;
           })}
-      </ul>
+      </GridContainer>
       {getFilteredTweets().length > limit && (
-        <button type="button" onClick={handleLoadMore}>
-          Load more
-        </button>
+        <ButtonWrapper>
+          <Button type="button" onClick={handleLoadMore}>
+            Load more
+          </Button>
+        </ButtonWrapper>
       )}
       {getFilteredTweets().length === 0 && <p>You do not follow any users</p>}
     </div>

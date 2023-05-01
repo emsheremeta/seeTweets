@@ -33,7 +33,6 @@ line height: 22px;
 color: #373737;
 text-decoration: none;
 `;
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
