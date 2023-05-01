@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
   width: 380px;
   height: 460px;
   border-radius: 20px;
@@ -13,14 +12,34 @@ export const UserName = styled.p`
   color: #ebd8ff;
   font-family: Montserrat;
   font-weight: 500;
-  font-size: 20px;
-  line height: 24.38px;
+  font-size: 18px;
+  text-align: center;
 `;
+
+export const UserTweets = styled.p`
+  color: #ebd8ff;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+`;
+
+export const UserFollowers = styled.p`
+  color: #ebd8ff;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+`;
+
 export const UserAvatar = styled.img`
-  margin-top: 200px;
+  margin-top: 175px;
   width: 62px;
   height: 62px;
   border-radius: 50%;
+  position: relative;
+  left: 65px;
+  z-index: 55;
 `;
 export const Button = styled.button`
   width: 196px;
@@ -36,4 +55,15 @@ export const Button = styled.button`
   color: #373737;
   border-color:  #ebd8ff;
 
+`;
+export const ImgWrapper = styled.div`
+  position: absolute;
+`;
+
+export const UserInfo = styled.li`
+  list-style: none;
+`;
+export const UserInfoWrapper = styled.div`
+  position: relative;
+  left: -93px;
 `;
