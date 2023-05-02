@@ -7,7 +7,7 @@ export const Tweets = () => {
       <Wrapper>
         <Text>Tweets are here</Text>
         <Button type="button">
-          <Link to="/TestGoIt">Go back</Link>
+          <Link to="/">Go back</Link>
         </Button>
       </Wrapper>
       <TweetList />
