@@ -21,6 +21,7 @@ background-color: #ebd8ff;
 color: #373737;
 border: rgb(235, 216, 255);
 align-item: center;
+cursor:pointer
 `;
 
 export const ButtonWrapper = styled.div`

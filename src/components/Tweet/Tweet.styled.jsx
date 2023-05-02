@@ -54,6 +54,11 @@ export const Button = styled.button`
   background-color: #ebd8ff;
   color: #373737;
   border-color:  #ebd8ff;
+  cursor:pointer;
+  :hover,
+  :focus {
+    box-shadow: 10px 10px 7px -8px rgba(0,0,0,0.76);
+  }
 
 `;
 export const ImgWrapper = styled.div`

@@ -13,7 +13,12 @@ border-radius: 10.31px;
 padding: 14px, 28px, 14px, 28px;
 background-color: #ebd8ff;
 color: #373737;
-border: rgb(235, 216, 255);`;
+border: rgb(235, 216, 255);
+:hover,
+:focus {
+    box-shadow: 10px 10px 23px -8px rgba(0,0,0,0.75);
+    
+}`;
 
 export const Text = styled.h1`
 font-family: Montserrat;
