@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import element from '../../img/Rectangle 1.png';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -6,14 +7,6 @@ export const Wrapper = styled.div`
   height: 460px;
   border-radius: 20px;
   offset: rgba(0, 0, 0, 0.23);
-`;
-
-export const UserName = styled.p`
-  color: #ebd8ff;
-  font-family: Montserrat;
-  font-weight: 500;
-  font-size: 18px;
-  text-align: center;
 `;
 
 export const UserTweets = styled.p`
@@ -40,6 +33,7 @@ export const UserAvatar = styled.img`
   position: relative;
   left: 65px;
   z-index: 55;
+  border: 6px solid white;
 `;
 export const Button = styled.button`
   width: 196px;
@@ -67,6 +61,12 @@ export const ImgWrapper = styled.div`
 
 export const UserInfo = styled.li`
   list-style: none;
+  ::before {
+    content: url(${element});
+    position: relative;
+    left: -95px;
+    top: 230px;
+  }
 `;
 export const UserInfoWrapper = styled.div`
   position: relative;

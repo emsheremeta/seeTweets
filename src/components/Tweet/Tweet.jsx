@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
   Wrapper,
-  UserName,
   UserAvatar,
   Button,
   ImgWrapper,
@@ -10,18 +9,15 @@ import {
   UserFollowers,
   UserInfoWrapper,
 } from './Tweet.styled';
-import ImgHeader from '../../img/picture2 1.png';
+import ImgHeader from '../../img/picture.png';
 import Logo from '../../img/Vector.png';
-import Rectangle from '../../img/Rectangle 1.png';
-import Elipse from '../../img/Ellipse 1 (Stroke).png';
 
-export const Tweet = ({ el }) => {
+export const Tweet = ({ el, handleLs }) => {
   const [followers, setFollowers] = useState(el.followers);
   const [follow, setFollow] = useState(el.follow ?? 'FOLLOW');
 
   const handleButton = e => {
     e.preventDefault();
-    console.log('follow');
     if (follow === 'FOLLOW') {
       setFollow('FOLLOWING');
       setFollowers(prev => prev + 1);
@@ -30,15 +26,10 @@ export const Tweet = ({ el }) => {
       setFollowers(prev => prev - 1);
     }
   };
+
   useEffect(() => {
-    localStorage.setItem(
-      el.id,
-      JSON.stringify({
-        followers: followers,
-        follow: follow,
-      })
-    );
-  }, [el.id, follow, followers]);
+    handleLs(el.id, follow, followers);
+  }, [el.id, follow, followers, handleLs]);
 
   return (
     <div>
@@ -74,41 +65,21 @@ export const Tweet = ({ el }) => {
           />
         </ImgWrapper>
         <UserInfo key={el.id}>
-          <img
-            src={Rectangle}
-            alt="rectangle"
-            style={{
-              position: 'relative',
-              left: '-95px',
-              top: '221px',
-            }}
-          />
-
           <UserAvatar src={el.avatar} alt="user avatar" />
-          <img
-            src={Elipse}
-            alt="elipse"
-            style={{
-              position: 'relative',
-              width: '85px',
-              height: '85px',
-              left: '-10px',
-              top: '15px',
-              zIndex: '55',
-            }}
-          />
           <UserInfoWrapper>
-            <UserName>{el.user}</UserName>
-            <UserTweets>{el.tweets} tweets</UserTweets>
+            {/* <UserName>{el.user.toLowerCase()}</UserName> */}
+            <UserTweets>{el.tweets} TWEETS</UserTweets>
             <UserFollowers>
-              {followers.toLocaleString('en-US')} followers
+              {followers.toLocaleString('en-US')} FOLLOWERS
             </UserFollowers>
           </UserInfoWrapper>
           <Button
+            id={el.id}
             type="button"
             onClick={handleButton}
             style={{
               backgroundColor: follow === 'FOLLOW' ? ' #ebd8ff' : '#5CD3A8',
+              border: 'none',
             }}
           >
             {follow}

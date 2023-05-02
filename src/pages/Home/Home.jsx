@@ -1,15 +1,17 @@
-import { Button, Text, Link, Wrapper } from './Home.styled';
+import { Button, Text, Wrapper } from './Home.styled';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
+  const navigate = useNavigate();
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('submit');
+    navigate('/tweets');
   };
   return (
     <Wrapper>
       <Text>WELCOME</Text>
       <Button type="button" onClick={handleSubmit}>
-        <Link to="/tweets"> See tweets</Link>
+        See tweets
       </Button>
     </Wrapper>
   );

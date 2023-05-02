@@ -5,7 +5,6 @@ export const GridContainer = styled.div`
   grid-template-columns: repeat(3, 0fr);
   grid-template-rows: repeat(3, 0fr);
   gap: 20px;
-  margin-left: 160px;
 `;
 export const Button = styled.button`
 width: 196px;
@@ -21,7 +20,8 @@ background-color: #ebd8ff;
 color: #373737;
 border: rgb(235, 216, 255);
 align-item: center;
-cursor:pointer
+cursor:pointer;
+
 `;
 
 export const ButtonWrapper = styled.div`
@@ -31,4 +31,8 @@ export const ButtonWrapper = styled.div`
 
 export const EmptyFollowing = styled.div`
   text-align: center;
+`;
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `;

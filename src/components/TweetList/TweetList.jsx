@@ -4,21 +4,30 @@ import { Tweet } from 'components/Tweet/Tweet';
 import { Filter } from 'components/Filter/Filter';
 import ReactLoading from 'react-loading';
 import { GridContainer } from './TweetList.styled';
-import { Button, ButtonWrapper, EmptyFollowing } from './TweetList.styled';
+import {
+  Button,
+  ButtonWrapper,
+  EmptyFollowing,
+  Wrapper,
+} from './TweetList.styled';
 
 export const TweetList = () => {
-  const [tweets, setTweets] = useState([]);
+  const [tweets, setTweets] = useState(
+    JSON.parse(localStorage.getItem('user_data')) ?? []
+  );
   const [filter, setFilter] = useState('Show all');
   const [limit, setLimit] = useState(3);
   const [loading, setLoading] = useState(false);
 
   const handleFilterChange = e => {
-    console.log(e);
     setFilter(e.target.value);
     setLimit(3);
   };
 
   useEffect(() => {
+    if (tweets.length) {
+      return;
+    }
     setLoading(true);
     axiosInstance
       .get(`/users`)
@@ -36,25 +45,28 @@ export const TweetList = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [tweets.length]);
+
   const handleLoadMore = e => {
     e.preventDefault();
     setLimit(prev => prev + 3);
   };
 
-  const getElement = el => {
-    let userInformation = JSON.parse(localStorage.getItem(el.id));
-    el.followers = userInformation?.followers ?? el.followers;
-    el.follow = userInformation?.follow ?? 'FOLLOW';
-
-    return el;
-  };
   const getFilteredTweets = () => {
     return tweets.filter(
       el =>
-        getElement(el).follow.toLowerCase() === filter.toLowerCase() ||
+        el.follow.toLowerCase() === filter.toLowerCase() ||
         filter === 'Show all'
     );
+  };
+  const saveToLs = (id, follow, followers) => {
+    tweets.forEach(el => {
+      if (el.id === id) {
+        el.follow = follow;
+        el.followers = followers;
+      }
+    });
+    localStorage.setItem('user_data', JSON.stringify(tweets));
   };
 
   if (loading) {
@@ -70,13 +82,15 @@ export const TweetList = () => {
   return (
     <div>
       <Filter handleChange={handleFilterChange} />
-      <GridContainer>
-        {getFilteredTweets()
-          .slice(0, limit)
-          .map(el => {
-            return <Tweet key={el.id} el={getElement(el)} />;
-          })}
-      </GridContainer>
+      <Wrapper>
+        <GridContainer>
+          {getFilteredTweets()
+            .slice(0, limit)
+            .map(el => {
+              return <Tweet key={el.id} el={el} handleLs={saveToLs} />;
+            })}
+        </GridContainer>
+      </Wrapper>
       {getFilteredTweets().length > limit && (
         <ButtonWrapper>
           <Button type="button" onClick={handleLoadMore}>
