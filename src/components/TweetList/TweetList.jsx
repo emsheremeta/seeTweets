@@ -55,7 +55,7 @@ export const TweetList = () => {
   const getFilteredTweets = () => {
     return tweets.filter(
       el =>
-        el.follow.toLowerCase() === filter.toLowerCase() ||
+        el.follow?.toLowerCase() === filter.toLowerCase() ||
         filter === 'Show all'
     );
   };
