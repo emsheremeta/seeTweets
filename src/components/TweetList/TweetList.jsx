@@ -36,7 +36,6 @@ export const TweetList = () => {
           console.log('error');
         } else {
           setTweets(response.data);
-          console.log(response.data);
         }
       })
       .catch(function (error) {
